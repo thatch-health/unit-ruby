@@ -21,5 +21,8 @@ module Unit
     belongs_to :receivePaymentTransaction, class_name: 'Unit::Transaction' # Optional
     belongs_to :paymentAdvanceTransaction, class_name: 'Unit::Transaction' # Optional
     belongs_to :repayPaymentAdvanceTransaction, class_name: 'Unit::Transaction' # Optional
+
+    include ResourceOperations::Find
+    include ResourceOperations::List
   end
 end
