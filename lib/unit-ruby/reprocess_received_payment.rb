@@ -7,6 +7,7 @@ module Unit
       "#{super(id)}/reprocess"
     end
 
+    include ResourceOperations::Find
     include ResourceOperations::Create
   end
 end
