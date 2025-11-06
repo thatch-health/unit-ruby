@@ -50,6 +50,7 @@ require 'unit-ruby/version'
 require 'unit-ruby/wire_payment'
 require 'unit-ruby/received_payment'
 require 'unit-ruby/reprocess_received_payment'
+require 'unit-ruby/wallet_account'
 
 module Unit
   # Usage:
