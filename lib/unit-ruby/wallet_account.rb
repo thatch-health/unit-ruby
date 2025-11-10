@@ -1,16 +1,13 @@
 module Unit
     class WalletAccount < APIResource
         path '/accounts'
-
-        #TODO(grant): Figure out whether Unit even supports this still or not
-        attribute :idempotency_key, Types::String, factory: -> { SecureRandom.uuid } # Optional
-        attribute :tags, Types::Hash # Optional
     
         attribute :created_at, Types::DateTime, readonly: true
+        attribute :updated_at, Types::DateTime, readonly: true
         attribute :name, Types::String, readonly: true # Name of the account holder
         attribute :routing_number, Types::String, readonly: true # Routing number of account.
         attribute :account_number, Types::String, readonly: true # Account number, together with the routingNumber forms the identifier of the account on the ACH network.
-        attribute :wallet_terms, Types::String, readonly: true # The terms of the wallet account.
+        attribute :deposit_product, Types::String, readonly: true # The name of the deposit product
         attribute :currency, Types::String, readonly: true # Currency of the account.
         attribute :balance, Types::Integer, readonly: true # The balance amount (in cents). The balance represents the funds that are are currently in the account (not taking into account future commitments). The balance equals the sum of 'available' and 'hold'.
         attribute :hold, Types::Integer, readonly: true # The hold amount (in cents). The hold represents funds that are not available for spending, typically due to an outstanding card authorization.
@@ -18,6 +15,11 @@ module Unit
         attribute :freeze_reason, Types::String, readonly: true # Optional. The reason the account was frozen, either Fraud or free-text description.
         attribute :close_reason, Types::String, readonly: true # Optional. The reason the account was closed, either ByCustomer or Fraud.
         attribute :fraud_status, Types::String, readonly: true # Optional. The fraud status of the account
+        attribute :data_status, Types::String, readonly: true # Optional
+
+        attribute :wallet_terms, Types::String # The terms of the wallet account.
+        attribute :idempotency_key, Types::String, factory: -> { SecureRandom.uuid } # Optional
+        attribute :tags, Types::Hash # Optional
 
         belongs_to :customer, class_name: 'Unit::IndividualCustomer'
 
