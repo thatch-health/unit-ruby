@@ -1,12 +1,11 @@
 module Unit
     module Types
         class BeneficialOwner
-            attr_reader :status, :full_name, :ssn, :passport, 
+            attr_reader :full_name, :ssn, :passport, 
             :nationality, :date_of_birth, :address, :phone, :email, 
             :percentage, :id_theft_score, :occupation, :annual_income, :source_of_income
 
             def initialize(
-                status:,
                 full_name:,
                 ssn:,
                 passport:,
@@ -21,7 +20,18 @@ module Unit
                 annual_income:,
                 source_of_income:
             )
-                @status = status
+                if ssn && passport
+                    raise ArgumentError, 'BeneficialOwner requires either SSN or passport, but not both'
+                end
+
+                unless ssn || passport
+                    raise ArgumentError, 'BeneficialOwner requires either SSN or passport'
+                end
+
+                if passport && !nationality
+                    raise ArgumentError, 'BeneficialOwner requires nationality when passport is provided'
+                end
+
                 @full_name = full_name
                 @ssn = ssn
                 @passport = passport
@@ -42,7 +52,6 @@ module Unit
                 return nil if val.nil?
 
                 new(
-                    status: val[:status],
                     full_name: FullName.cast(val[:full_name]),
                     ssn: val[:ssn],
                     passport: val[:passport],
@@ -60,12 +69,8 @@ module Unit
             end
 
             def as_json_api
-                {
-                    status: status,
+                result = {
                     full_name: full_name&.as_json_api,
-                    ssn: ssn,
-                    passport: passport,
-                    nationality: nationality,
                     date_of_birth: date_of_birth,
                     address: address&.as_json_api,
                     phone: phone&.as_json_api,
@@ -75,7 +80,16 @@ module Unit
                     occupation: occupation,
                     annual_income: annual_income,
                     source_of_income: source_of_income
-                }.compact
+                }
+
+                if ssn
+                    result[:ssn] = ssn
+                elsif passport
+                    result[:passport] = passport
+                    result[:nationality] = nationality
+                end
+
+                result.compact
             end
         end
     end

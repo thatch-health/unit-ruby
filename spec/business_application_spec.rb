@@ -39,7 +39,6 @@ RSpec.describe Unit::BusinessApplication do
   let(:beneficial_owners) do
     [
       Unit::Types::BeneficialOwner.new(
-        status: 'Approved',
         full_name: Unit::Types::FullName.new(first: 'Bob', last: 'Johnson'),
         ssn: '111222333',
         passport: 'CD789012',

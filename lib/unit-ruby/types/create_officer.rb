@@ -18,6 +18,18 @@ module Unit
                 annual_income: nil,
                 source_of_income: nil
             )
+                if ssn && passport
+                    raise ArgumentError, 'CreateOfficer requires either SSN or passport, but not both'
+                end
+
+                unless ssn || passport
+                    raise ArgumentError, 'CreateOfficer requires either SSN or passport'
+                end
+
+                if passport && !nationality
+                    raise ArgumentError, 'CreateOfficer requires nationality when passport is provided'
+                end
+
                 @full_name = full_name
                 @title = title
                 @ssn = ssn
@@ -55,12 +67,9 @@ module Unit
             end
 
             def as_json_api
-                {
+                result = {
                     full_name: full_name&.as_json_api,
                     title: title,
-                    ssn: ssn,
-                    passport: passport,
-                    nationality: nationality,
                     date_of_birth: date_of_birth,
                     address: address&.as_json_api,
                     phone: phone&.as_json_api,
@@ -69,7 +78,16 @@ module Unit
                     occupation: occupation,
                     annual_income: annual_income,
                     source_of_income: source_of_income
-                }.compact
+                }
+
+                if ssn
+                    result[:ssn] = ssn
+                elsif passport
+                    result[:passport] = passport
+                    result[:nationality] = nationality
+                end
+
+                result.compact
             end
         end
     end

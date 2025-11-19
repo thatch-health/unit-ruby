@@ -26,6 +26,7 @@ require 'unit-ruby/types/industry'
 require 'unit-ruby/types/integer'
 require 'unit-ruby/types/phone'
 require 'unit-ruby/types/string'
+require 'unit-ruby/types/title'
 require 'unit-ruby/types/wire_counterparty'
 
 require 'unit-ruby/ach_counterparty'

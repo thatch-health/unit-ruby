@@ -14,7 +14,9 @@ module Unit
       end
 
       def as_json_api
-        items
+        items.map do |item|
+          item.respond_to?(:as_json_api) ? item.as_json_api : item
+        end
       end
     end
   end
