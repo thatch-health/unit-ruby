@@ -39,7 +39,7 @@ module Unit
 
         include ResourceOperations::Find
         include ResourceOperations::List
-        include ResourceOperations::Save
+        include ResourceOperations::Create
 
         def resource_path
             self.class.resource_path(id)
