@@ -24,6 +24,7 @@ module Unit
         attribute :beneficial_owners, Types::Array # Beneficial owners of the business
         attribute :year_of_incorporation, Types::String # Year of incorporation of the business
         attribute :stock_symbol, Types::String
+        attribute :business_vertical, Types::BusinessVertical
         attribute :industry, Types::Industry # Optional
         attribute :operating_address, Types::Address # Optional
         attribute :annual_revenue, Types::String # Optional, required if any officer or beneficial owner has non-US nationality
