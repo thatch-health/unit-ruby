@@ -36,5 +36,3 @@ module Unit
       end
     end
   end
-  
-  

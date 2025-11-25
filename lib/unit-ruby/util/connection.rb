@@ -1,4 +1,3 @@
-require 'base64' # Required by faraday in Ruby 3.4+
 require 'faraday'
 require 'faraday/retry'
 require 'active_support/core_ext/hash'

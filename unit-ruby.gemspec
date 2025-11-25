@@ -35,8 +35,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'activesupport'
-  spec.add_dependency 'base64', '~> 0.3' # Required by faraday in Ruby 3.4+
-  spec.add_dependency 'bigdecimal' # Required by activesupport in Ruby 3.4+
   spec.add_dependency 'faraday', '>= 1.10', '< 3'
   spec.add_dependency 'faraday-retry'
 
