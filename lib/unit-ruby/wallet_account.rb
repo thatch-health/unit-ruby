@@ -3,14 +3,15 @@ module Unit
         path '/accounts'
 
         #TODO(grant): Figure out whether Unit even supports this still or not
+        attribute :wallet_terms, Types::String
         attribute :idempotency_key, Types::String, factory: -> { SecureRandom.uuid } # Optional
         attribute :tags, Types::Hash # Optional
     
         attribute :created_at, Types::DateTime, readonly: true
+        attribute :status, Types::String, readonly: true # Status of the account, either Open, Frozen, or Closed.
         attribute :name, Types::String, readonly: true # Name of the account holder
         attribute :routing_number, Types::String, readonly: true # Routing number of account.
         attribute :account_number, Types::String, readonly: true # Account number, together with the routingNumber forms the identifier of the account on the ACH network.
-        attribute :wallet_terms, Types::String, readonly: true # The terms of the wallet account.
         attribute :currency, Types::String, readonly: true # Currency of the account.
         attribute :balance, Types::Integer, readonly: true # The balance amount (in cents). The balance represents the funds that are are currently in the account (not taking into account future commitments). The balance equals the sum of 'available' and 'hold'.
         attribute :hold, Types::Integer, readonly: true # The hold amount (in cents). The hold represents funds that are not available for spending, typically due to an outstanding card authorization.
