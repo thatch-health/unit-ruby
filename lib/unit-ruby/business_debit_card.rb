@@ -8,7 +8,7 @@ module Unit
       attribute :shipping_address, Types::Address # Optional, if not specified then address is used for shipping.
       attribute :phone, Types::Phone # Phone number of the cardholder
       attribute :email, Types::String # Email address of the cardholder
-      attribute :design, Types::String # Optional. You may omit if you only have one card design. Please contact Unit if you need multiple card designs.
+      attribute :design, Types::String # Optional. You may omit if only one card design. Please contact Unit if you need multiple card designs.
       attribute :additional_embossed_text, Types::String # Optional, up to 21 characters. Use for a second cardholder name, company name, or other data to be embossed on a card.
       attribute :idempotency_key, Types::String, factory: -> { SecureRandom.uuid } # Optional
       attribute :tags, Types::Hash # Optional
