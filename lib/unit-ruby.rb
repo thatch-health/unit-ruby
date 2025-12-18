@@ -58,6 +58,8 @@ require 'unit-ruby/wire_payment'
 require 'unit-ruby/received_payment'
 require 'unit-ruby/reprocess_received_payment'
 require 'unit-ruby/wallet_account'
+require 'unit-ruby/business_debit_card'
+require 'unit-ruby/business_virtual_debit_card'
 
 module Unit
   # Usage:
