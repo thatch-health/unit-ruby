@@ -60,6 +60,8 @@ require 'unit-ruby/reprocess_received_payment'
 require 'unit-ruby/wallet_account'
 require 'unit-ruby/business_debit_card'
 require 'unit-ruby/business_virtual_debit_card'
+require 'unit-ruby/cardholder_token'
+require 'unit-ruby/cardholder_token_verification'
 
 module Unit
   # Usage:
