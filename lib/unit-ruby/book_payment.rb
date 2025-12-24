@@ -8,8 +8,8 @@ module Unit
     attribute :tags, Types::Hash # Optional
     attribute :idempotency_key, Types::String, factory: -> { SecureRandom.uuid } # Optional
 
-    belongs_to :account, resource_type: "depositAccount", class_name: 'Unit::DepositAccount'
-    belongs_to :counterparty_account, resource_type: "depositAccount", class_name: 'Unit::DepositAccount'
+    belongs_to :account
+    belongs_to :counterparty_account
 
     include ResourceOperations::Create
   end
