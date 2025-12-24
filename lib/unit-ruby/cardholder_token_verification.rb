@@ -1,12 +1,12 @@
 module Unit
     class CardholderTokenVerification < APIResource
-      path '/customers'
+      path '/cards'
   
       attribute :channel, Types::String
       attribute :verification_token, Types::String, readonly: true
   
       def self.resources_path(id)
-        "#{super(id)}/token/verification"
+        "#{super(id)}/cardholder/token/verification"
       end
   
       include ResourceOperations::Create
