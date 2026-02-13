@@ -17,20 +17,30 @@ module Unit
         attribute :phone, Types::Phone
         attribute :state_of_incorporation, Types::String
         attribute :ein, Types::String
-        attribute :entity_type, Types::String
-        attribute :website, Types::String
+        attribute :entity_type, Types::String # LLC, Partnership, PubliclyTradedCorporation, PrivatelyHeldCorporation, NotForProfitOrganization, Estate, Trust, ForeignFinancialInstitution, DomesticFinancialInstitution, GovernmentEntityOrAgency, ReligiousOrganization, Charity
+        attribute :website, Types::String # A valid website URL. null = business attests they have no website
         attribute :contact, Types::BusinessContact # Primary contact of the business
         attribute :officer, Types::CreateOfficer # Officer representing the business
         attribute :beneficial_owners, Types::Array # Beneficial owners of the business
         attribute :year_of_incorporation, Types::String # Year of incorporation of the business
-        attribute :stock_symbol, Types::String
-        attribute :business_vertical, Types::BusinessVertical
-        attribute :industry, Types::Industry # Optional
+        attribute :countries_of_operation, Types::Array # Array of ISO 3166-1 Alpha-2 country codes
+
+        # V2 fields
+        attribute :source_of_funds, Types::String # Primary source of funds of the business
+        attribute :source_of_funds_description, Types::String # Required if source_of_funds is importExportRevenue or donationsOrFundraising
+        attribute :business_industry, Types::String # The industry of the business
+        attribute :business_description, Types::String # Brief description of the business including main products/services and customers
+        attribute :is_regulated, Types::Boolean # Is the business regulated by a government agency or financial regulator?
+        attribute :regulator_name, Types::String # Required if is_regulated is true
+        attribute :us_nexus, Types::Array # Nature of business's ties to the U.S. Either NotAvailable or one or more of the other options
+        attribute :account_purpose, Types::String # Primary purpose of the account
+        attribute :account_purpose_detail, Types::String # Required for certain account_purpose values
+        attribute :transaction_volume, Types::String # Expected monthly transaction volume
+        attribute :transaction_volume_description, Types::String # Required when transaction_volume is $1,000,001+
+        attribute :stock_symbol, Types::String # Required if entity_type is PubliclyTradedCorporation
+        attribute :stock_exchange_name, Types::String # Required if entity_type is PubliclyTradedCorporation
+
         attribute :operating_address, Types::Address # Optional
-        attribute :annual_revenue, Types::String # Optional, required if any officer or beneficial owner has non-US nationality
-        attribute :number_of_employees, Types::String # Optional, required if any officer or beneficial owner has non-US nationality
-        attribute :cash_flow, Types::String # Optional, required if any officer or beneficial owner has non-US nationality
-        attribute :countries_of_operation, Types::Array # Optional, required if any officer or beneficial owner has non-US nationality
         attribute :ip, Types::String # Optional
         attribute :device_fingerprints, Types::Array # Optional
         attribute :banks, Types::Array # Optional
