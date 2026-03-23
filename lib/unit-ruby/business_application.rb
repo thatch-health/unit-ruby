@@ -31,16 +31,17 @@ module Unit
         attribute :number_of_employees, Types::String # Optional, required if any officer or beneficial owner has non-US nationality
         attribute :cash_flow, Types::String # Optional, required if any officer or beneficial owner has non-US nationality
         attribute :countries_of_operation, Types::Array # Optional, required if any officer or beneficial owner has non-US nationality
+        attribute :business_vertical, Types::BusinessVertical # The vertical of the business
 
         # V2 fields
-        attribute :source_of_funds, Types::String # Primary source of funds of the business
+        attribute :source_of_funds, Types::SourceOfFunds # Primary source of funds of the business
         attribute :source_of_funds_description, Types::String # Required if source_of_funds is importExportRevenue or donationsOrFundraising
         attribute :business_industry, Types::BusinessIndustry # The industry of the business
         attribute :business_description, Types::String # Brief description of the business including main products/services and customers
         attribute :is_regulated, Types::Boolean # Is the business regulated by a government agency or financial regulator?
         attribute :regulator_name, Types::String # Required if is_regulated is true
         attribute :us_nexus, Types::Array # Array of UsNexus values: nature of business's ties to the U.S.
-        attribute :account_purpose, Types::String # Primary purpose of the account
+        attribute :account_purpose, Types::AccountPurpose # Primary purpose of the account
         attribute :account_purpose_detail, Types::String # Required for certain account_purpose values
         attribute :transaction_volume, Types::TransactionVolume # Expected monthly transaction volume (Business: LessThan10K, Between10KAnd50K, etc.)
         attribute :transaction_volume_description, Types::String # Required when transaction_volume is $1,000,001+

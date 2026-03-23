@@ -19,6 +19,14 @@ module Unit
     attribute :device_fingerprints, Types::Array # array of Device Fingerprint	Optional. A list of device fingerprints for fraud and risk prevention
     attribute :occupation, Types::String # Occupation of the individual, from a list of possible values.
 
+    # V2 fields
+    attribute :account_purpose, Types::AccountPurpose # Primary purpose of the account
+    attribute :account_purpose_detail, Types::String # Required for certain account_purpose values
+    attribute :source_of_funds, Types::SourceOfFunds # Primary source of fundsPrimary source of funds for the underlying account
+    attribute :transaction_volume, Types::TransactionVolume # Expected monthly transaction volume (Individual: LessThan10K, Between10KAnd50K, etc.)
+    attribute :transaction_volume_description, Types::String # Required when transaction_volume is $30,001+
+    attribute :profession, Types::Profession # Profession of the individual
+
     attribute :created_at, Types::DateTime, readonly: true
     attribute :status, Types::String, readonly: true
     attribute :message, Types::String, readonly: true
