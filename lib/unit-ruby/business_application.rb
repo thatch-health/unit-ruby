@@ -24,6 +24,13 @@ module Unit
         attribute :beneficial_owners, Types::Array # Beneficial owners of the business
         attribute :year_of_incorporation, Types::String # Year of incorporation of the business
         attribute :countries_of_operation, Types::Array # Array of ISO 3166-1 Alpha-2 country codes
+        attribute :stock_symbol, Types::String # Required if entity_type is PubliclyTradedCorporation
+        attribute :business_vertical, Types::BusinessVertical # The vertical of the business
+        attribute :industry, Types::Industry  # Optional
+        attribute :annual_revenue, Types::String # Optional, required if any officer or beneficial owner has non-US nationality
+        attribute :number_of_employees, Types::String # Optional, required if any officer or beneficial owner has non-US nationality
+        attribute :cash_flow, Types::String # Optional, required if any officer or beneficial owner has non-US nationality
+        attribute :countries_of_operation, Types::Array # Optional, required if any officer or beneficial owner has non-US nationality
 
         # V2 fields
         attribute :source_of_funds, Types::String # Primary source of funds of the business
