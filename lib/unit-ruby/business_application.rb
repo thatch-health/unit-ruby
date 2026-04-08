@@ -30,8 +30,6 @@ module Unit
         attribute :annual_revenue, Types::String # Optional, required if any officer or beneficial owner has non-US nationality
         attribute :number_of_employees, Types::String # Optional, required if any officer or beneficial owner has non-US nationality
         attribute :cash_flow, Types::String # Optional, required if any officer or beneficial owner has non-US nationality
-        attribute :countries_of_operation, Types::Array # Optional, required if any officer or beneficial owner has non-US nationality
-        attribute :business_vertical, Types::BusinessVertical # The vertical of the business
 
         # V2 fields
         attribute :source_of_funds, Types::SourceOfFunds # Primary source of funds of the business
@@ -45,7 +43,6 @@ module Unit
         attribute :account_purpose_detail, Types::String # Required for certain account_purpose values
         attribute :transaction_volume, Types::TransactionVolume # Expected monthly transaction volume (Business: LessThan10K, Between10KAnd50K, etc.)
         attribute :transaction_volume_description, Types::String # Required when transaction_volume is $1,000,001+
-        attribute :stock_symbol, Types::String # Required if entity_type is PubliclyTradedCorporation
         attribute :stock_exchange_name, Types::String # Required if entity_type is PubliclyTradedCorporation
 
         attribute :operating_address, Types::Address # Optional
