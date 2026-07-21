@@ -49,6 +49,7 @@ module Unit
         attribute :ip, Types::String # Optional
         attribute :device_fingerprints, Types::Array # Optional
         attribute :banks, Types::Array # Optional
+        attribute :external_cip, Types::Boolean # Optional. True when CIP/KYC is performed externally by the platform.
 
         belongs_to :customer, class_name: 'Unit::BusinessCustomer'
         belongs_to :application_form, class_name: 'Unit::ApplicationForm'
